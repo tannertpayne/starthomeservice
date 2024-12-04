@@ -14,3 +14,19 @@ form.addEventListener('submit', e => {
         })
         .catch(error => console.error('Error!', error.message));
 });
+
+const form = document.forms['contact-form-2'];
+
+form.addEventListener('submit', e => {
+    e.preventDefault(); // Prevent default form submission
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+            if (response.ok) {
+                alert("Thank you! Your form has been submitted successfully.");
+                form.reset(); // Reset the form after successful submission
+            } else {
+                alert("There was an issue with your submission.");
+            }
+        })
+        .catch(error => console.error('Error!', error.message));
+});
